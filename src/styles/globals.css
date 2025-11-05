@@ -1,0 +1,352 @@
+:root {
+  color-scheme: dark;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.top-bar {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  gap: 16px;
+}
+
+.top-bar__button {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.top-bar__button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.top-bar__button:active {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.top-bar__button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.top-bar__timers {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.top-bar__time {
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--font-weight-medium);
+}
+
+.top-bar__time--muted {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.top-bar__progress {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.top-bar__progress-fill {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  transition: width 0.2s ease;
+}
+
+.bottom-bar {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  gap: 16px;
+}
+
+.bottom-bar__group,
+.bottom-bar__sliders,
+.bottom-bar__pointer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bottom-bar__icon-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.bottom-bar__icon-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.bottom-bar__icon-button:active {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.bottom-bar__icon-button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bottom-bar__icon-button--primary {
+  background: rgba(255, 255, 255, 0.3);
+  color: #000000;
+}
+
+.bottom-bar__icon-button--active {
+  background: rgba(255, 255, 255, 0.3);
+  color: #000000;
+}
+
+.bottom-bar__sliders {
+  flex: 1;
+  justify-content: center;
+}
+
+.bottom-bar__slider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bottom-bar__slider-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.bottom-bar__slider-text {
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+
+.bottom-bar__slider-value {
+  font-variant-numeric: tabular-nums;
+  width: 24px;
+  text-align: right;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 180px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.6) var(--slider-progress, 50%),
+    rgba(255, 255, 255, 0.2) var(--slider-progress, 50%),
+    rgba(255, 255, 255, 0.2) 100%
+  );
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.slider--compact {
+  width: 120px;
+}
+
+.bottom-bar__pointer-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bottom-bar__pointer-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+.bottom-bar__pointer-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+.text-viewport {
+  position: relative;
+  flex: 1;
+  display: flex;
+  background: rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.text-viewport__pointer {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  pointer-events: none;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+}
+
+.triangle-pointer--pulse {
+  animation: subtle-pulse 2s ease-in-out infinite;
+}
+
+@keyframes subtle-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.text-viewport__scroller {
+  flex: 1;
+  overflow-y: auto;
+  padding: 48px 80px;
+  scrollbar-width: none;
+}
+
+.text-viewport__scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.text-viewport__scroller--mirrored {
+  direction: rtl;
+}
+
+.text-viewport__content {
+  max-width: 100%;
+  color: #ffffff;
+}
+
+.text-viewport__content p {
+  margin: 0 0 1.3em 0;
+  white-space: pre-wrap;
+}
+
+.text-viewport__spacer--top {
+  height: 70%;
+}
+
+.text-viewport__spacer--bottom {
+  height: 26%;
+}
+
+.orientation-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.orientation-overlay__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.orientation-overlay__icon {
+  width: 64px;
+  height: 64px;
+  animation: orientation-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes orientation-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
